@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FileText, BookOpen } from 'lucide-react';
+import { FileText, BookOpen, FlaskConical } from 'lucide-react';
 
 export function Header() {
   return (
@@ -15,6 +15,13 @@ export function Header() {
           </div>
         </Link>
         <div className="flex items-center gap-2">
+          <Link
+            href="/metodologia"
+            className="inline-flex items-center gap-1.5 bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-semibold px-4 py-2 rounded-xl text-xs transition-all"
+          >
+            <FlaskConical className="w-3.5 h-3.5" />
+            Metodología
+          </Link>
           <Link
             href="/biblioteca"
             className="inline-flex items-center gap-1.5 bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 font-semibold px-4 py-2 rounded-xl text-xs transition-all"
