@@ -7,6 +7,25 @@ export interface IOC {
   defanged: string;
 }
 
+export type IOAType =
+  | 'proceso'
+  | 'registro'
+  | 'ruta'
+  | 'comando'
+  | 'evento_windows'
+  | 'pipe_nombrado'
+  | 'mutex'
+  | 'servicio'
+  | 'tarea_programada'
+  | 'comportamiento';
+
+export interface IOA {
+  id: string;
+  type: IOAType;
+  value: string;
+  context: string; // human-readable explanation of why it's suspicious
+}
+
 export type SeverityLevel = 'crítico' | 'alto' | 'medio' | 'bajo';
 
 export interface Severity {
@@ -66,6 +85,7 @@ export interface Report {
     nistFunction: string;
   };
   iocs: IOC[];
+  ioas: IOA[];
   timeline: {
     events: TimelineEvent[];
     technicalAnalysis: string;

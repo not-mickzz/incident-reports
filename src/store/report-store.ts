@@ -2,7 +2,7 @@
 
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { Report, IOC, TaxonomyIncident, SeverityLevel, TLPLevel, TimelineEvent } from '@/types';
+import type { Report, IOC, IOA, TaxonomyIncident, SeverityLevel, TLPLevel, TimelineEvent } from '@/types';
 import { generateId, nowISO } from '@/lib/utils';
 
 function createEmptyReport(): Report {
@@ -24,6 +24,7 @@ function createEmptyReport(): Report {
       nistFunction: '',
     },
     iocs: [],
+    ioas: [],
     timeline: {
       events: [],
       technicalAnalysis: '',
@@ -63,6 +64,11 @@ interface ReportState {
   addIOCs: (iocs: IOC[]) => void;
   removeIOC: (id: string) => void;
   clearIOCs: () => void;
+
+  // IOAs
+  addIOAs: (ioas: IOA[]) => void;
+  removeIOA: (id: string) => void;
+  clearIOAs: () => void;
 
   // Timeline
   addTimelineEvent: (event: Omit<TimelineEvent, 'id'>) => void;
@@ -166,6 +172,31 @@ export const useReportStore = create<ReportState>()(
       clearIOCs: () =>
         set((s) => ({
           currentReport: { ...s.currentReport, iocs: [] },
+        })),
+
+      addIOAs: (ioas) =>
+        set((s) => {
+          const existingValues = new Set(s.currentReport.ioas.map((i) => i.value.toLowerCase()));
+          const newIOAs = ioas.filter((i) => !existingValues.has(i.value.toLowerCase()));
+          return {
+            currentReport: {
+              ...s.currentReport,
+              ioas: [...s.currentReport.ioas, ...newIOAs],
+            },
+          };
+        }),
+
+      removeIOA: (id) =>
+        set((s) => ({
+          currentReport: {
+            ...s.currentReport,
+            ioas: s.currentReport.ioas.filter((i) => i.id !== id),
+          },
+        })),
+
+      clearIOAs: () =>
+        set((s) => ({
+          currentReport: { ...s.currentReport, ioas: [] },
         })),
 
       addTimelineEvent: (event) =>

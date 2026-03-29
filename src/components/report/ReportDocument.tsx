@@ -4,6 +4,7 @@ import { Badge, MitreBadge } from '@/components/ui/Badge';
 import { SEVERITIES } from '@/data/severity';
 import { TLP_LEVELS } from '@/data/tlp';
 import { IOC_TYPE_LABELS } from '@/lib/ioc-parser';
+import { IOA_TYPE_LABELS, IOA_TYPE_COLORS } from '@/lib/ioa-parser';
 import { formatDate, formatDateLong } from '@/lib/utils';
 import type { Report } from '@/types';
 
@@ -173,11 +174,44 @@ export function ReportDocument({ report }: Props) {
           </section>
         )}
 
+        {/* IOAs */}
+        {report.ioas.length > 0 && (
+          <section>
+            <h2 className="text-lg font-extrabold text-blue-900 border-b-2 border-orange-500 pb-1 mb-3">
+              4. Indicadores de Ataque (IOAs)
+            </h2>
+            <p className="text-xs text-slate-500 mb-3">
+              Se identificaron {report.ioas.length} indicador{report.ioas.length !== 1 ? 'es' : ''} de ataque (comportamiento malicioso).
+            </p>
+            <table className="w-full text-left text-xs border border-orange-200 rounded-lg overflow-hidden">
+              <thead>
+                <tr className="bg-gradient-to-r from-orange-500 to-red-600 text-white">
+                  <th className="px-3 py-2 font-bold text-[11px] w-32">Tipo</th>
+                  <th className="px-3 py-2 font-bold text-[11px]">Indicador</th>
+                  <th className="px-3 py-2 font-bold text-[11px]">Contexto</th>
+                </tr>
+              </thead>
+              <tbody>
+                {report.ioas.map((ioa, idx) => (
+                  <tr
+                    key={ioa.id}
+                    className={`border-t border-orange-100 ${idx % 2 === 0 ? 'bg-white' : 'bg-orange-50/30'}`}
+                  >
+                    <td className="px-3 py-2 font-bold text-slate-600">{IOA_TYPE_LABELS[ioa.type]}</td>
+                    <td className="px-3 py-2 font-mono text-orange-700 font-semibold break-all">{ioa.value}</td>
+                    <td className="px-3 py-2 text-slate-600 leading-relaxed">{ioa.context}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        )}
+
         {/* Timeline */}
         {report.timeline.events.length > 0 && (
           <section>
             <h2 className="text-lg font-extrabold text-blue-900 border-b-2 border-blue-600 pb-1 mb-3">
-              4. Timeline del Incidente
+              5. Timeline del Incidente
             </h2>
             <div className="space-y-0">
               {report.timeline.events.map((event, idx) => (
@@ -204,7 +238,7 @@ export function ReportDocument({ report }: Props) {
         {report.timeline.technicalAnalysis && (
           <section>
             <h2 className="text-lg font-extrabold text-blue-900 border-b-2 border-blue-600 pb-1 mb-3">
-              5. Análisis Técnico
+              6. Análisis Técnico
             </h2>
             <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-wrap">
               {report.timeline.technicalAnalysis}
@@ -216,7 +250,7 @@ export function ReportDocument({ report }: Props) {
         {(report.actions.containment || report.actions.eradication || report.actions.recovery) && (
           <section>
             <h2 className="text-lg font-extrabold text-blue-900 border-b-2 border-blue-600 pb-1 mb-3">
-              6. Acciones de Respuesta
+              7. Acciones de Respuesta
             </h2>
             <div className="space-y-4">
               {report.actions.containment && (
@@ -245,7 +279,7 @@ export function ReportDocument({ report }: Props) {
         {report.actions.recommendations && (
           <section>
             <h2 className="text-lg font-extrabold text-blue-900 border-b-2 border-blue-600 pb-1 mb-3">
-              7. Recomendaciónes
+              8. Recomendaciones
             </h2>
             <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-wrap">{report.actions.recommendations}</p>
           </section>
@@ -255,7 +289,7 @@ export function ReportDocument({ report }: Props) {
         {report.classification.taxonomy?.recommendedControls && (
           <section>
             <h2 className="text-lg font-extrabold text-blue-900 border-b-2 border-blue-600 pb-1 mb-3">
-              8. Controles Recomendados (Taxonomía)
+              9. Controles Recomendados (Taxonomía)
             </h2>
             <p className="text-sm text-slate-600 leading-relaxed">
               {report.classification.taxonomy.recommendedControls}
@@ -267,7 +301,7 @@ export function ReportDocument({ report }: Props) {
         {report.actions.lessonsLearned && (
           <section>
             <h2 className="text-lg font-extrabold text-blue-900 border-b-2 border-blue-600 pb-1 mb-3">
-              9. Lecciones Aprendidas
+              10. Lecciones Aprendidas
             </h2>
             <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-wrap">{report.actions.lessonsLearned}</p>
           </section>
@@ -277,7 +311,7 @@ export function ReportDocument({ report }: Props) {
         {report.classification.taxonomy && (
           <section>
             <h2 className="text-lg font-extrabold text-blue-900 border-b-2 border-blue-600 pb-1 mb-3">
-              10. Mapeo a Frameworks de Seguridad
+              11. Mapeo a Frameworks de Seguridad
             </h2>
             <table className="w-full text-xs border border-slate-200 rounded-lg overflow-hidden">
               <thead>
