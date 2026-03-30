@@ -14,6 +14,9 @@ export function generateStaticParams() {
   return TAXONOMIES.map((t) => ({ code: t.code }));
 }
 
+export const dynamicParams = false;
+export const dynamic = 'force-static';
+
 export default async function BibliotecaDetailPage({
   params,
 }: {
