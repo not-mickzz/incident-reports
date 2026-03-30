@@ -1,12 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: 'Generador de Reportes de Incidentes de Seguridad',
-  description:
-    'Genera reportes profesionales de incidentes de seguridad a partir de IOCs y taxonomías estandarizadas. Mapeo a MITRE ATT&CK, NIST-CSF, ISO 27002 y CIS Top 18.',
+  description: 'Genera reportes profesionales de incidentes de seguridad a partir de IOCs y taxonomías estandarizadas. Mapeo a MITRE ATT&CK, NIST-CSF, ISO 27002 y CIS Top 18.',
   metadataBase: new URL('https://reportes.mickzz.xyz'),
   keywords: [
     'incidentes de seguridad',
@@ -22,10 +19,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'mickzz' }],
   openGraph: {
     title: 'Generador de Reportes de Incidentes',
-    description:
-      'Genera reportes profesionales de incidentes de seguridad con taxonomía Profesor Vargas v0.2.',
-    url: 'https://www.ttpsec.cl',
-    siteName: 'TTPSEC',
+    description: 'Genera reportes profesionales de incidentes de seguridad.',
+    url: 'https://reportes.mickzz.xyz',
+    siteName: 'mickzz.xyz',
     locale: 'es_CL',
     type: 'website',
   },
@@ -40,17 +36,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" dir="ltr" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-800">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
