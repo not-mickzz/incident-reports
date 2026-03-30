@@ -30,6 +30,23 @@ export function Footer() {
           </p>
         </div>
 
+        {/* MIT License */}
+        <div className="border-t border-slate-100 pt-4 mt-4 max-w-3xl mx-auto">
+          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider text-center mb-1.5">
+            Licencia MIT
+          </p>
+          <p className="text-[10px] text-slate-400 leading-relaxed text-center">
+            Copyright &copy; {new Date().getFullYear()} TTPSEC. Se concede permiso, de forma gratuita,
+            a cualquier persona que obtenga una copia de este software, para utilizarlo sin restricción,
+            incluyendo sin limitación los derechos de usar, copiar, modificar, fusionar, publicar,
+            distribuir, sublicenciar y/o vender copias del software, y a permitir a las personas a
+            quienes se les proporcione el software a hacer lo mismo, sujeto a las siguientes condiciones:
+            el aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias o
+            partes sustanciales del software. EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE
+            NINGÚN TIPO, EXPRESA O IMPLÍCITA.
+          </p>
+        </div>
+
         <p className="text-[10px] text-slate-400 italic text-center mt-4">
           Software para el bien común — TTPSEC &copy; {new Date().getFullYear()}
         </p>
