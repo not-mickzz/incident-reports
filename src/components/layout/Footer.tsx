@@ -1,4 +1,5 @@
 import { LOGO_BASE64 } from '@/lib/logo';
+import { APP_VERSION, APP_DATE } from '@/lib/version';
 
 export function Footer() {
   return (
@@ -60,6 +61,10 @@ export function Footer() {
 
         <p className="text-[10px] text-slate-400 italic text-center mt-4">
           Software para el bien común — TTPSEC &copy; {new Date().getFullYear()}
+          <span className="mx-2">·</span>
+          <span className="font-mono">v{APP_VERSION}</span>
+          <span className="mx-2">·</span>
+          {APP_DATE}
         </p>
       </div>
     </footer>
