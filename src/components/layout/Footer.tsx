@@ -1,10 +1,12 @@
+import { LOGO_BASE64 } from '@/lib/logo';
+
 export function Footer() {
   return (
     <footer className="bg-white border-t border-slate-200 py-8 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Brand row */}
         <div className="flex items-center justify-center gap-2 mb-3">
-          <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo-ttpsec.png`} alt="TTPSEC" className="w-6 h-6 rounded object-cover" />
+          <img src={LOGO_BASE64} alt="TTPSEC" className="w-6 h-6 rounded object-cover" />
           <span className="text-sm font-black text-blue-900 tracking-tight">TTPSEC</span>
         </div>
         <p className="text-xs text-slate-500 mb-1 text-center">

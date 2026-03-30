@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { FaviconInject } from '@/components/layout/FaviconInject';
 
 export const metadata: Metadata = {
   title: 'TTPSEC - Generador de Reportes de Incidentes de Seguridad',
@@ -61,6 +62,7 @@ export default function RootLayout({
   return (
     <html lang="es" dir="ltr" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-800">
+        <FaviconInject />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

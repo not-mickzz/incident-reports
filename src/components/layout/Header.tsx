@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { FileText, BookOpen, FlaskConical } from 'lucide-react';
+import { LOGO_BASE64 } from '@/lib/logo';
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between flex-wrap gap-3">
         <Link href="/" className="flex items-center gap-3">
-          <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo-ttpsec.png`} alt="TTPSEC" className="w-10 h-10 rounded-xl object-cover" />
+          <img src={LOGO_BASE64} alt="TTPSEC" className="w-10 h-10 rounded-xl object-cover" />
           <div>
             <h1 className="text-lg font-black text-blue-900 tracking-tight">TTPSEC</h1>
             <p className="text-[11px] text-slate-500 font-medium">Generador de Reportes de Incidentes</p>
