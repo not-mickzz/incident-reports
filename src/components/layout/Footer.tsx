@@ -33,17 +33,10 @@ export function Footer() {
         {/* MIT License */}
         <div className="border-t border-slate-100 pt-4 mt-4 max-w-3xl mx-auto">
           <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider text-center mb-1.5">
-            Licencia MIT
+            MIT License
           </p>
-          <p className="text-[10px] text-slate-400 leading-relaxed text-center">
-            Copyright &copy; {new Date().getFullYear()} TTPSEC. Se concede permiso, de forma gratuita,
-            a cualquier persona que obtenga una copia de este software, para utilizarlo sin restricción,
-            incluyendo sin limitación los derechos de usar, copiar, modificar, fusionar, publicar,
-            distribuir, sublicenciar y/o vender copias del software, y a permitir a las personas a
-            quienes se les proporcione el software a hacer lo mismo, sujeto a las siguientes condiciones:
-            el aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias o
-            partes sustanciales del software. EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE
-            NINGÚN TIPO, EXPRESA O IMPLÍCITA.
+          <p className="text-[10px] text-slate-400 leading-relaxed text-center whitespace-pre-line">
+            {`Copyright (c) ${new Date().getFullYear()} TTPSEC\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`}
           </p>
         </div>
 
