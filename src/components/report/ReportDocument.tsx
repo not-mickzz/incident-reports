@@ -5,6 +5,7 @@ import { SEVERITIES } from '@/data/severity';
 import { TLP_LEVELS } from '@/data/tlp';
 import { IOC_TYPE_LABELS } from '@/lib/ioc-parser';
 import { IOA_TYPE_LABELS, IOA_TYPE_COLORS } from '@/lib/ioa-parser';
+import { LOGO_BASE64 } from '@/lib/logo';
 import { formatDate, formatDateLong } from '@/lib/utils';
 import type { Report } from '@/types';
 
@@ -18,35 +19,96 @@ export function ReportDocument({ report }: Props) {
 
   return (
     <div id="report-document" className="bg-white max-w-4xl mx-auto shadow-md">
-      {/* Cover / Header */}
-      <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white p-8">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
+      {/* PORTADA PROFESIONAL */}
+      <div className="relative overflow-hidden" style={{ minHeight: '340px', background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%)' }}>
+        {/* Geometric background accents */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full opacity-10" style={{ background: 'radial-gradient(circle, #60a5fa, transparent)' }} />
+          <div className="absolute bottom-0 -left-10 w-64 h-64 rounded-full opacity-5" style={{ background: 'radial-gradient(circle, #a78bfa, transparent)' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-px opacity-10" style={{ background: 'linear-gradient(to right, transparent, #60a5fa, transparent)' }} />
+        </div>
+
+        {/* Top bar: org logo + TLP */}
+        <div className="relative flex items-center justify-between px-10 pt-8 pb-0">
+          <div className="flex items-center gap-4">
             <img
-              src={report.general.logoUrl || `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo-ttpsec.png`}
+              src={report.general.logoUrl || LOGO_BASE64}
               alt="Logo"
-              className="h-12 w-auto rounded-lg"
+              className="h-14 w-auto rounded-2xl shadow-lg ring-1 ring-white/20"
             />
             <div>
-              <p className="text-xs font-semibold text-blue-200">{report.general.organization || 'Organización'}</p>
-              <p className="text-[10px] text-blue-300">Reporte de Incidente de Seguridad</p>
+              <p className="text-white font-black text-base tracking-tight leading-tight">
+                {report.general.organization || 'TTPSEC'}
+              </p>
+              <p className="text-blue-300 text-[11px] font-medium uppercase tracking-widest">
+                Centro de Respuesta a Incidentes
+              </p>
             </div>
           </div>
-          <span
-            className="px-3 py-1.5 rounded-lg text-xs font-bold"
-            style={{ backgroundColor: tlp.bgColor, color: tlp.color }}
-          >
-            {tlp.label}
-          </span>
+          <div className="flex flex-col items-end gap-2">
+            <span
+              className="px-4 py-1.5 rounded-xl text-xs font-black tracking-widest uppercase shadow-lg ring-1 ring-white/20"
+              style={{ backgroundColor: tlp.bgColor, color: tlp.color }}
+            >
+              {tlp.label}
+            </span>
+            <span className="text-blue-400 text-[10px] font-mono">
+              ID: {report.id.slice(0, 8).toUpperCase()}
+            </span>
+          </div>
         </div>
-        <h1 className="text-2xl font-black tracking-tight mb-2">
-          {report.general.title || 'Reporte de Incidente'}
-        </h1>
-        <div className="flex gap-6 text-xs text-blue-200">
-          <span>Detección: {formatDate(report.general.detectionDate)}</span>
-          <span>Reporte: {formatDate(report.general.reportDate)}</span>
-          <span>Analista: {report.general.analyst || 'N/A'}</span>
+
+        {/* Divider line */}
+        <div className="relative mx-10 mt-6 mb-5 h-px" style={{ background: 'linear-gradient(to right, transparent, #3b82f6, #6366f1, transparent)' }} />
+
+        {/* Title block */}
+        <div className="relative px-10 pb-4">
+          <p className="text-blue-400 text-[11px] font-bold uppercase tracking-[0.2em] mb-2">
+            Reporte de Incidente de Seguridad
+          </p>
+          <h1 className="text-3xl font-black text-white tracking-tight leading-tight mb-4" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>
+            {report.general.title || 'Reporte de Incidente'}
+          </h1>
+
+          {/* Severity + MITRE chips */}
+          <div className="flex items-center gap-2 flex-wrap mb-5">
+            <span
+              className="px-3 py-1 rounded-lg text-[11px] font-black uppercase tracking-wide shadow"
+              style={{ backgroundColor: severity.bgColor, color: severity.color, border: `1px solid ${severity.borderColor}` }}
+            >
+              ● {severity.label}
+            </span>
+            {report.classification.taxonomy && (
+              <>
+                <span className="px-3 py-1 rounded-lg bg-indigo-600/80 text-white text-[11px] font-bold ring-1 ring-indigo-400/40">
+                  {report.classification.taxonomy.code}
+                </span>
+                {report.classification.taxonomy.mitreTechniques.slice(0, 3).map((t) => (
+                  <span key={t} className="px-2 py-1 rounded-md bg-white/10 text-blue-200 text-[10px] font-mono ring-1 ring-white/10">
+                    {t}
+                  </span>
+                ))}
+              </>
+            )}
+          </div>
+
+          {/* Metadata grid */}
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { label: 'Fecha Detección', value: formatDate(report.general.detectionDate) },
+              { label: 'Fecha Reporte', value: formatDate(report.general.reportDate) },
+              { label: 'Analista', value: report.general.analyst || 'N/A' },
+            ].map(({ label, value }) => (
+              <div key={label} className="bg-white/5 rounded-xl px-4 py-2.5 ring-1 ring-white/10">
+                <p className="text-blue-400 text-[9px] font-bold uppercase tracking-widest mb-0.5">{label}</p>
+                <p className="text-white text-xs font-semibold">{value}</p>
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Bottom accent bar */}
+        <div className="relative mt-6 h-1" style={{ background: 'linear-gradient(to right, #2563eb, #6366f1, #8b5cf6)' }} />
       </div>
 
       <div className="p-8 space-y-8">
