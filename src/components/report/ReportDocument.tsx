@@ -38,7 +38,7 @@ export function ReportDocument({ report }: Props) {
             />
             <div>
               <p className="text-white font-black text-base tracking-tight leading-tight">
-                {report.general.organization || 'TTPSEC'}
+                {report.general.organization || 'Reporte de Incidentes'}
               </p>
               <p className="text-blue-300 text-[11px] font-medium uppercase tracking-widest">
                 Centro de Respuesta a Incidentes
@@ -417,10 +417,10 @@ export function ReportDocument({ report }: Props) {
         {/* Footer */}
         <div className="border-t border-slate-200 pt-4 text-center">
           <p className="text-[10px] text-slate-400">
-            Reporte generado el {formatDateLong(report.createdAt)} | TTPSEC - Software para el bien común
+            Reporte generado el {formatDateLong(report.createdAt)}
           </p>
           <p className="text-[10px] text-slate-400 font-mono mt-1">
-            Taxonomía Profesor Vargas v0.2 | ID: {report.id.slice(0, 8)}
+            Reporte de Incidentes - mickzz.xyz © 2026 | ID: {report.id.slice(0, 8)}
           </p>
         </div>
       </div>

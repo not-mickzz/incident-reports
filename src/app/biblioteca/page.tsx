@@ -29,10 +29,6 @@ export default function BibliotecaPage() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Hero */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-xs font-bold mb-4">
-          <BookOpen className="w-3.5 h-3.5" />
-          Taxonomía Profesor Vargas v0.2 | 42 Incidentes
-        </div>
         <h1 className="text-3xl md:text-4xl font-black text-blue-900 tracking-tight mb-3">
           Biblioteca de Incidentes de Seguridad
         </h1>

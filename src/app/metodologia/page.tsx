@@ -12,10 +12,6 @@ export default function MetodologiaPage() {
 
       {/* Hero */}
       <div className="text-center">
-        <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-xs font-bold mb-4">
-          <BookOpen className="w-3.5 h-3.5" />
-          Metodología TTPSEC | Taxonomía Profesor Vargas v0.2
-        </div>
         <h1 className="text-3xl md:text-4xl font-black text-blue-900 tracking-tight mb-3">
           Metodología de Respuesta a Incidentes
         </h1>
@@ -56,7 +52,7 @@ export default function MetodologiaPage() {
 
       {/* Taxonomía */}
       <section>
-        <SectionTitle icon={Layers} title="Taxonomía Profesor Vargas v0.2" subtitle="40 tipos de incidentes en 4 categorías principales" />
+        <SectionTitle icon={Layers} title="Taxonomía de incidentes" subtitle="40 tipos de incidentes en 4 categorías principales, basado en Profesor Vargas v0.2" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           {CATEGORIAS.map((cat) => (
             <div key={cat.code} className={`rounded-2xl p-6 border-2 ${cat.borderColor} ${cat.bgColor}`}>
@@ -435,7 +431,7 @@ const IOC_TYPES = [
 const WORKFLOW = [
   { title: 'Detección del incidente', description: 'Identificar que ocurrió un evento anómalo a través de alertas SIEM, reportes de usuarios, o monitoreo activo. Registrar hora de detección.' },
   { title: 'Recopilar IOCs', description: 'Extraer todos los indicadores de compromiso: IPs de origen, hashes de archivos maliciosos, dominios C2, URLs de phishing. Pegarlos directamente en el paso de IOCs del wizard.' },
-  { title: 'Clasificar con la taxonomía', description: 'Seleccionar el tipo de incidente en la taxonomía Profesor Vargas v0.2. El sistema auto-completa los mapeos a MITRE ATT&CK, NIST-CSF, ISO 27002 y CIS Top 18.' },
+  { title: 'Clasificar con la taxonomía', description: 'Seleccionar el tipo de incidente en la taxonomía. El sistema auto-completa los mapeos a MITRE ATT&CK, NIST-CSF, ISO 27002 y CIS Top 18.' },
   { title: 'Asignar severidad y TLP', description: 'Determinar el nivel de impacto (Crítico/Alto/Medio/Bajo) y el protocolo TLP según con quién se compartirá el reporte.' },
   { title: 'Documentar el timeline', description: 'Registrar cronológicamente cada evento relevante del incidente con fecha y hora precisas. Agregar el análisis técnico detallado.' },
   { title: 'Documentar acciones de respuesta', description: 'Registrar las acciones de contención, erradicación y recuperación ejecutadas. Incluir lecciones aprendidas y recomendaciones.' },

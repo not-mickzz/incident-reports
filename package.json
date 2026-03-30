@@ -1,6 +1,6 @@
 {
-  "name": "incidentes",
-  "version": "0.1.0",
+  "name": "incident-reports",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,8 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.101.0",
     "date-fns": "^4.1.0",
-    "html2canvas": "^1.4.1",
+    "html2canvas-pro": "^2.0.2",
     "jspdf": "^4.2.1",
     "lucide-react": "^1.7.0",
     "next": "16.2.1",

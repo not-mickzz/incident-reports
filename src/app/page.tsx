@@ -3,11 +3,10 @@ import {
   FileText, Shield, Radar, BookOpen, FlaskConical,
   CheckCircle, Database, Lock, Globe, Zap, Users
 } from 'lucide-react';
-import { LOGO_BASE64 } from '@/lib/logo';
 
 const FEATURES = [
   { icon: FileText,  color: 'text-blue-600',    bg: 'bg-blue-50',    title: 'Wizard de 6 pasos',     desc: 'Flujo guiado: datos generales, clasificación, IOCs, IOAs, timeline, acciones y preview.' },
-  { icon: Shield,    color: 'text-indigo-600',   bg: 'bg-indigo-50',  title: '42 Taxonomías',          desc: 'Taxonomía Profesor Vargas v0.2 mapeada a MITRE ATT&CK, NIST-CSF, ISO 27002, CIS Top 18 y SCF.' },
+  { icon: Shield,    color: 'text-indigo-600',   bg: 'bg-indigo-50',  title: '40 Taxonomías',          desc: 'Taxonomía de incidentes mapeada a MITRE ATT&CK, NIST-CSF, ISO 27002, CIS Top 18 y SCF.' },
   { icon: Database,  color: 'text-emerald-600',  bg: 'bg-emerald-50', title: 'Auto-detección IOCs',    desc: 'Detecta IPs, hashes MD5/SHA1/SHA256, dominios, URLs y emails con defanging automático.' },
   { icon: Radar,     color: 'text-orange-500',   bg: 'bg-orange-50',  title: 'Detección de IOAs',      desc: 'Identifica comportamientos maliciosos: registry keys, Event IDs, LOLBins, named pipes, mutex.' },
   { icon: Lock,      color: 'text-red-600',      bg: 'bg-red-50',     title: 'TLP v2.0',               desc: 'RED, AMBER+STRICT, AMBER, GREEN y CLEAR para controlar la distribución del reporte.' },
@@ -44,10 +43,6 @@ export default function Home() {
           <div className="absolute bottom-0 -left-10 w-48 h-48 rounded-full opacity-5" style={{ background: 'radial-gradient(circle, #a78bfa, transparent)' }} />
         </div>
         <div className="relative max-w-6xl mx-auto px-5 py-14 sm:py-20 text-center">
-          <img src={LOGO_BASE64} alt="TTPSEC" className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl mx-auto mb-5 shadow-2xl ring-2 ring-white/20" />
-          <div className="inline-flex items-center gap-2 bg-white/10 text-blue-200 text-xs font-bold px-4 py-1.5 rounded-full mb-4 ring-1 ring-white/20">
-            <Zap className="w-3 h-3" /> Taxonomía Profesor Vargas v0.2
-          </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight mb-4">
             Generador de Reportes<br />
             <span className="text-blue-400">de Incidentes de Seguridad</span>
@@ -105,7 +100,7 @@ export default function Home() {
               estructurados de forma rápida y estandarizada.
             </p>
             <p className="text-slate-600 text-sm leading-relaxed mb-5">
-              Basada en la <strong className="text-slate-800">Taxonomía Profesor Vargas v0.2</strong>, cubre 42 tipos de incidentes
+              Basada en la taxonomía de incidentes, cubre 40 tipos de incidentes
               mapeados a MITRE ATT&CK, NIST-CSF, ISO 27002 y CIS Top 18.
             </p>
             <div className="space-y-2">
@@ -177,20 +172,6 @@ export default function Home() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-gradient-to-r from-blue-900 to-indigo-900 py-14">
-        <div className="max-w-2xl mx-auto px-5 text-center">
-          <h2 className="text-2xl sm:text-3xl font-black text-white mb-3">Listo para comenzar</h2>
-          <p className="text-blue-200 text-sm mb-7 leading-relaxed">Sin registro, sin instalación. Abre el wizard y genera tu primer reporte en minutos.</p>
-          <Link
-            href="/nuevo"
-            className="inline-flex items-center gap-2 bg-white text-blue-900 font-black px-8 py-3.5 rounded-2xl text-sm shadow-xl hover:bg-blue-50 transition-all"
-          >
-            <FileText className="w-4 h-4" /> Crear mi primer reporte
-          </Link>
         </div>
       </section>
 
