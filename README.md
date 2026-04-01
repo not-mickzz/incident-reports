@@ -40,7 +40,7 @@ Plataforma web profesional para la creación, gestión y exportación de reporte
 ### 1. Clona el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/incident-reports.git
+git clone https://github.com/not-mickzz/incident-reports.git
 cd incident-reports
 ```
 
@@ -156,4 +156,4 @@ src/
 
 ## 📄 Licencia
 
-MIT © 2026 — [mickzz.xyz](https://mickzz.xyz)
+MIT © 2026 — TTPSEC
